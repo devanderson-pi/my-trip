@@ -1,5 +1,7 @@
+import { Text } from 'react-native';
+
 const SignIn = () => {
-  return null;
+  return <Text>Sign In</Text>;
 };
 
 export default SignIn;
