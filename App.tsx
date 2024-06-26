@@ -1,7 +1,15 @@
-import { Text } from 'react-native';
+import 'react-native-gesture-handler';
+
+import { NavigationContainer } from '@react-navigation/native';
+
+import AppNavigator from './src/navigation/AppNavigator';
 
 const App = () => {
-  return <Text>My Trip</Text>;
+  return (
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
+  );
 };
 
 export default App;
