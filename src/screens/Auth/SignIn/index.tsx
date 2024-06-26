@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import { Text } from 'react-native';
 
 const SignIn = () => {
-  return <Text>Sign In</Text>;
+  const { t } = useTranslation('signIn');
+
+  return <Text>{t('heading')}</Text>;
 };
 
 export default SignIn;

@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react-native';
+import { screen } from '@testing-library/react-native';
 
+import { renderI18next } from '../../../config/test/utils/renderI18Next';
 import SignIn from '.';
 
 test('renders correctly', () => {
-  render(<SignIn />);
+  renderI18next(<SignIn />);
 
-  const heading = screen.getByText('Sign In');
+  const heading = screen.getByText('Sign in');
 
   expect(heading).toBeOnTheScreen();
 });

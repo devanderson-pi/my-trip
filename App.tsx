@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import './src/config/i18next';
 
 import { NavigationContainer } from '@react-navigation/native';
 
