@@ -4,7 +4,7 @@ const config = {
   preset: 'react-native',
   setupFilesAfterEnv: ['<rootDir>/src/config/jest-setup.ts'],
   transformIgnorePatterns: [
-    '/node_modules/(?!(@react-native|@react-navigation|react-native)/)',
+    '/node_modules/(?!(@react-native|@react-navigation|react-native|react-native-vector-icons)/)',
   ],
 };
 
