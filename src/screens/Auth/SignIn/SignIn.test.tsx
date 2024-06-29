@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react-native';
 
-import { renderI18next } from '../../../config/test/utils/renderI18Next';
+import { customRender } from '../../../config/test/utils/customRender';
 import SignIn from '.';
 
 test('renders correctly', () => {
-  renderI18next(<SignIn />);
+  customRender(<SignIn />);
 
-  const heading = screen.getByText('Sign in');
+  const heading = screen.getByTestId('signInScreen');
 
   expect(heading).toBeOnTheScreen();
 });

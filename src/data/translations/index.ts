@@ -1,3 +1,4 @@
+import { commonEnUS, commonPtBR } from './common';
 import {
   signInTranslationEnUS,
   signInTranslationPtBR,
@@ -5,9 +6,11 @@ import {
 
 const resources = {
   'en-US': {
+    common: commonEnUS,
     signIn: signInTranslationEnUS,
   },
   'pt-BR': {
+    common: commonPtBR,
     signIn: signInTranslationPtBR,
   },
 };
