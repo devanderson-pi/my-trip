@@ -2,8 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { UserCredential } from '../../../data/@types/authType';
-import { signInSchema } from '../../../data/schemas/authSchema';
+import { UserRegistration } from '../../../data/@types/authType';
+import { signUpSchema } from '../../../data/schemas/authSchema';
 import { RootStackScreenProps } from '../../../navigation/types';
 import Button from '../../../ui/components/Button';
 import Flex from '../../../ui/components/Flex';
@@ -14,30 +14,58 @@ import Spacer from '../../../ui/components/Spacer';
 import Text from '../../../ui/components/Text';
 import theme from '../../../ui/theme';
 
-const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
+const SignUp = ({ navigation }: RootStackScreenProps<'SignUp'>) => {
   const {
     control,
     formState: { isValid },
     handleSubmit,
-  } = useForm<UserCredential>({
-    resolver: zodResolver(signInSchema),
+  } = useForm<UserRegistration>({
+    resolver: zodResolver(signUpSchema),
   });
-  const { t } = useTranslation(['signIn', 'common']);
+  const { t } = useTranslation(['signUp', 'common']);
 
-  const onSubmit: SubmitHandler<UserCredential> = data => {
+  const onSubmit: SubmitHandler<UserRegistration> = data => {
     console.log(data);
   };
 
   return (
     <Layout
       justify="center"
-      testID="signInScreen"
+      testID="signUpScreen"
     >
       <Flex align="center">
         <Heading size="3xl">{t('heading')}</Heading>
       </Flex>
 
       <Spacer size={48} />
+
+      <Controller
+        control={control}
+        name="name"
+        render={({ field: { onChange, value } }) => {
+          return (
+            <Flex gap={8}>
+              <Text
+                color={theme.colors.secondary}
+                nativeID="nameLabel"
+                size="sm"
+                weight="semibold"
+              >
+                {t('common:label.name')}
+              </Text>
+
+              <Input
+                accessibilityLabel={t('common:label.name')}
+                accessibilityLabelledBy="nameLabel"
+                onChange={onChange}
+                value={value}
+              />
+            </Flex>
+          );
+        }}
+      />
+
+      <Spacer size={16} />
 
       <Controller
         control={control}
@@ -103,7 +131,7 @@ const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
         disabled={!isValid}
         onPress={handleSubmit(onSubmit)}
       >
-        {t('button.signIn')}
+        {t('button.signUp')}
       </Button>
 
       <Spacer size={16} />
@@ -112,14 +140,14 @@ const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
         label={[
           {
             color: theme.colors.text,
-            text: t('button.goToSignUp', { returnObjects: true })[0],
+            text: t('button.goToSignIn', { returnObjects: true })[0],
           },
           {
             color: theme.colors.secondary,
-            text: t('button.goToSignUp', { returnObjects: true })[1],
+            text: t('button.goToSignIn', { returnObjects: true })[1],
           },
         ]}
-        onPress={() => navigation.navigate('SignUp')}
+        onPress={() => navigation.goBack()}
         size="md"
         variant="ghost"
       />
@@ -127,4 +155,4 @@ const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
   );
 };
 
-export default SignIn;
+export default SignUp;

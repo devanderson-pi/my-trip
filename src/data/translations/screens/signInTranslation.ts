@@ -1,15 +1,15 @@
 export const signInTranslationEnUS = {
   button: {
+    goToSignUp: ["Don't have an account?", 'Sign up'],
     signIn: 'Sign in',
-    signUp: ["Don't have an account?", 'Sign up'],
   },
   heading: 'Sign in',
 };
 
 export const signInTranslationPtBR = {
   button: {
+    goToSignUp: ['Ainda não possui conta?', 'Faça o cadastro'],
     signIn: 'Entrar',
-    signUp: ['Ainda não possui conta?', 'Faça o cadastro'],
   },
   heading: 'Acesse sua conta',
 };

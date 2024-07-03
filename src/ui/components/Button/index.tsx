@@ -24,6 +24,7 @@ interface ButtonProps extends TouchableOpacityProps {
 }
 
 const Button = ({
+  accessibilityLabel,
   children,
   color,
   disabled,
@@ -31,6 +32,7 @@ const Button = ({
   label = [],
   leftIcon,
   loadingText = 'Loading',
+  onPress,
   size = 'lg',
   testID,
   variant = 'primary',
@@ -38,6 +40,7 @@ const Button = ({
   const renderLabel = label.map((item, index, array) => {
     return (
       <StyledLabel
+        accessibilityLabel={accessibilityLabel}
         color={item.color}
         disabled={disabled}
         key={index}
@@ -53,6 +56,7 @@ const Button = ({
   return (
     <StyledButton
       disabled={disabled}
+      onPress={onPress}
       style={[buttonStyle.size[size], buttonStyle.variant[variant]]}
       testID={testID}
     >

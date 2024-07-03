@@ -2,20 +2,20 @@ import { screen } from '@testing-library/react-native';
 
 import { customRender } from '../../../config/test/utils/customRender';
 import { RootStackScreenProps } from '../../../navigation/types';
-import SignIn from '.';
+import SignUp from '.';
 
 test('renders correctly', () => {
-  const navigation = {} as RootStackScreenProps<'SignIn'>['navigation'];
-  const route = {} as RootStackScreenProps<'SignIn'>['route'];
+  const navigation = {} as RootStackScreenProps<'SignUp'>['navigation'];
+  const route = {} as RootStackScreenProps<'SignUp'>['route'];
 
   customRender(
-    <SignIn
+    <SignUp
       navigation={navigation}
       route={route}
     />
   );
 
-  const heading = screen.getByTestId('signInScreen');
+  const heading = screen.getByTestId('signUpScreen');
 
   expect(heading).toBeOnTheScreen();
 });
