@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import theme from '../../theme';
@@ -6,7 +6,16 @@ import Button from '.';
 
 describe('ui/components/Button', () => {
   test('renders default Button correctly', () => {
-    render(<Button testID="button">Test</Button>);
+    const onPressMock = jest.fn();
+
+    render(
+      <Button
+        onPress={onPressMock}
+        testID="button"
+      >
+        Test
+      </Button>
+    );
 
     const button = screen.getByTestId('button');
     const label = screen.getByText('Test');
@@ -24,6 +33,9 @@ describe('ui/components/Button', () => {
       fontSize: 18,
       lineHeight: 28,
     });
+
+    fireEvent.press(button);
+    expect(onPressMock).toHaveBeenCalledTimes(1);
   });
 
   test('renders medium Button correctly', () => {
