@@ -4,6 +4,7 @@ import './src/config/i18next';
 import { ThemeProvider } from '@emotion/react';
 import { NavigationContainer } from '@react-navigation/native';
 
+import { AuthProvider } from './src/contexts/Auth';
 import AppNavigator from './src/navigation/AppNavigator';
 import theme from './src/ui/theme';
 
@@ -11,7 +12,9 @@ const App = () => {
   return (
     <NavigationContainer>
       <ThemeProvider theme={theme}>
-        <AppNavigator />
+        <AuthProvider>
+          <AppNavigator />
+        </AuthProvider>
       </ThemeProvider>
     </NavigationContainer>
   );

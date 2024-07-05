@@ -1,5 +1,9 @@
 import { commonEnUS, commonPtBR } from './common';
 import {
+  authErrorTranslationEnUS,
+  authErrorTranslationPtBR,
+} from './errors/authErrorTranslation';
+import {
   signInTranslationEnUS,
   signInTranslationPtBR,
 } from './screens/signInTranslation';
@@ -10,11 +14,13 @@ import {
 
 const resources = {
   'en-US': {
+    authError: authErrorTranslationEnUS,
     common: commonEnUS,
     signIn: signInTranslationEnUS,
     signUp: signUpTranslationEnUS,
   },
   'pt-BR': {
+    authError: authErrorTranslationPtBR,
     common: commonPtBR,
     signIn: signInTranslationPtBR,
     signUp: signUpTranslationPtBR,

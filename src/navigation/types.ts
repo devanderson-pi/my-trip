@@ -14,7 +14,9 @@ export type RootStackParamList = {
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   StackScreenProps<RootStackParamList, T>;
 
-export type HomeTabParamList = {};
+export type HomeTabParamList = {
+  MyTrips: undefined;
+};
 
 export type HomeTabScreenProps<T extends keyof HomeTabParamList> =
   CompositeScreenProps<
