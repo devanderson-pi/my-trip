@@ -16,6 +16,7 @@ export type RootStackScreenProps<T extends keyof RootStackParamList> =
 
 export type HomeTabParamList = {
   MyTrips: undefined;
+  Settings: undefined;
 };
 
 export type HomeTabScreenProps<T extends keyof HomeTabParamList> =
