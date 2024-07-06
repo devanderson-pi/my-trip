@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import Layout from '../../ui/components/Layout';
@@ -19,33 +20,45 @@ const Language = () => {
     <Layout>
       <Spacer size={16} />
 
-      <StyledMenuButtonContainer>
-        <StyledMenuButton onPress={() => handleChangeLanguage('en-US')}>
-          <Text color={theme.colors.secondary}>{t('menu.english')}</Text>
+      <View accessibilityRole="menu">
+        <StyledMenuButtonContainer>
+          <StyledMenuButton
+            accessibilityRole="menuitem"
+            accessibilityState={{ selected: i18next.language === 'en-US' }}
+            onPress={() => handleChangeLanguage('en-US')}
+          >
+            <Text color={theme.colors.secondary}>{t('menu.english')}</Text>
 
-          {i18next.language === 'en-US' && (
-            <Icon
-              color={theme.colors.success}
-              name="check"
-              size={24}
-            />
-          )}
-        </StyledMenuButton>
-      </StyledMenuButtonContainer>
+            {i18next.language === 'en-US' && (
+              <Icon
+                color={theme.colors.success}
+                name="check"
+                size={24}
+              />
+            )}
+          </StyledMenuButton>
+        </StyledMenuButtonContainer>
 
-      <StyledMenuButtonContainer>
-        <StyledMenuButton onPress={() => handleChangeLanguage('pt-BR')}>
-          <Text color={theme.colors.secondary}>{t('menu.portuguese')}</Text>
+        <StyledMenuButtonContainer>
+          <StyledMenuButton
+            accessibilityRole="menuitem"
+            accessibilityState={{
+              selected: i18next.language === 'pt-BR',
+            }}
+            onPress={() => handleChangeLanguage('pt-BR')}
+          >
+            <Text color={theme.colors.secondary}>{t('menu.portuguese')}</Text>
 
-          {i18next.language === 'pt-BR' && (
-            <Icon
-              color={theme.colors.success}
-              name="check"
-              size={24}
-            />
-          )}
-        </StyledMenuButton>
-      </StyledMenuButtonContainer>
+            {i18next.language === 'pt-BR' && (
+              <Icon
+                color={theme.colors.success}
+                name="check"
+                size={24}
+              />
+            )}
+          </StyledMenuButton>
+        </StyledMenuButtonContainer>
+      </View>
     </Layout>
   );
 };

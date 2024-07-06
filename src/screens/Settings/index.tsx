@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import { HomeTabScreenProps } from '../../navigation/types';
@@ -17,60 +18,72 @@ const Settings = ({ navigation }: HomeTabScreenProps<'Settings'>) => {
     <Layout>
       <Spacer size={30} />
 
-      <StyledMenuButtonContainer>
-        <StyledMenuButton disabled>
-          <Flex
-            align="center"
-            direction="row"
-            gap={18}
+      <View accessibilityRole="menu">
+        <StyledMenuButtonContainer>
+          <StyledMenuButton
+            accessibilityHint={t('accessibility.menu.account.hint')}
+            accessibilityRole="menuitem"
+            disabled
           >
-            <Icon
-              color={theme.colors.secondary}
-              name="user"
-              size={20}
-            />
-
-            <Text
-              color={theme.colors.secondary}
-              weight="medium"
+            <Flex
+              align="center"
+              direction="row"
+              gap={18}
             >
-              {t('menu.account')}
-            </Text>
-          </Flex>
-        </StyledMenuButton>
-      </StyledMenuButtonContainer>
+              <Icon
+                color={theme.colors.secondary}
+                name="user"
+                size={20}
+              />
 
-      <StyledMenuButtonContainer>
-        <StyledMenuButton onPress={() => navigation.navigate('Language')}>
-          <Flex
-            align="center"
-            direction="row"
-            gap={18}
+              <Text
+                color={theme.colors.secondary}
+                weight="medium"
+              >
+                {t('menu.account')}
+              </Text>
+            </Flex>
+          </StyledMenuButton>
+        </StyledMenuButtonContainer>
+
+        <StyledMenuButtonContainer>
+          <StyledMenuButton
+            accessibilityHint={t('accessibility.menu.language.hint')}
+            accessibilityRole="menuitem"
+            onPress={() => navigation.navigate('Language')}
           >
-            <Icon
-              color={theme.colors.secondary}
-              name="globe"
-              size={20}
-            />
-
-            <Text
-              color={theme.colors.secondary}
-              weight="medium"
+            <Flex
+              align="center"
+              direction="row"
+              gap={18}
             >
-              {t('menu.language')}
-            </Text>
-          </Flex>
-        </StyledMenuButton>
-      </StyledMenuButtonContainer>
+              <Icon
+                color={theme.colors.secondary}
+                name="globe"
+                size={20}
+              />
 
-      <Spacer size={24} />
+              <Text
+                color={theme.colors.secondary}
+                weight="medium"
+              >
+                {t('menu.language')}
+              </Text>
+            </Flex>
+          </StyledMenuButton>
+        </StyledMenuButtonContainer>
 
-      <Button
-        color={theme.colors.error}
-        variant="ghost"
-      >
-        {t('menu.signOut')}
-      </Button>
+        <Spacer size={24} />
+
+        <Button
+          accessibilityHint={t('accessibility.menu.signOut.hint')}
+          accessibilityRole="menuitem"
+          color={theme.colors.error}
+          variant="ghost"
+        >
+          {t('menu.signOut')}
+        </Button>
+      </View>
     </Layout>
   );
 };

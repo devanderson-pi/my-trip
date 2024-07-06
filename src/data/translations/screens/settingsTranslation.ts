@@ -1,4 +1,20 @@
 export const settingsTranslationEnUS = {
+  accessibility: {
+    menu: {
+      account: {
+        hint: 'Navigate to account settings',
+        label: 'Account',
+      },
+      language: {
+        hint: 'Navigate to language settings',
+        label: 'Language',
+      },
+      signOut: {
+        hint: 'Log out of your account',
+        label: 'Sign out',
+      },
+    },
+  },
   menu: {
     account: 'Account',
     language: 'Language',
@@ -7,6 +23,22 @@ export const settingsTranslationEnUS = {
 };
 
 export const settingsTranslationPtBR = {
+  accessibility: {
+    menu: {
+      account: {
+        hint: 'Navegar para as configurações da conta',
+        label: 'Conta',
+      },
+      language: {
+        hint: 'Navegar para as configurações de idioma',
+        label: 'Idioma',
+      },
+      signOut: {
+        hint: 'Sair da sua conta',
+        label: 'Sair',
+      },
+    },
+  },
   menu: {
     account: 'Conta',
     language: 'Idioma',
