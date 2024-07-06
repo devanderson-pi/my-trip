@@ -15,7 +15,5 @@ test('renders correctly', () => {
     />
   );
 
-  const heading = screen.getByTestId('signUpScreen');
-
-  expect(heading).toBeOnTheScreen();
+  expect(screen.getByTestId('signUpScreen')).toBeOnTheScreen();
 });
