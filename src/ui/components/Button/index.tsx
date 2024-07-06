@@ -51,7 +51,8 @@ const Button = ({
     );
   });
 
-  const labelColor = variant !== 'primary' ? theme.colors.secondary : color;
+  const labelColor =
+    variant !== 'primary' && !color ? theme.colors.secondary : color;
 
   return (
     <StyledButton

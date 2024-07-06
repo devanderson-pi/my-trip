@@ -69,6 +69,7 @@ describe('ui/components/Button', () => {
   test('renders ghost Button correctly', () => {
     render(
       <Button
+        color={theme.colors.error}
         variant="ghost"
         testID="button"
       >
@@ -86,7 +87,7 @@ describe('ui/components/Button', () => {
       backgroundColor: 'transparent',
     });
     expect(label).toHaveStyle({
-      color: theme.colors.secondary,
+      color: theme.colors.error,
       fontFamily: theme.fonts.medium,
     });
   });
