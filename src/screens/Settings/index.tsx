@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/Feather';
 
+import { HomeTabScreenProps } from '../../navigation/types';
 import Button from '../../ui/components/Button';
 import Flex from '../../ui/components/Flex';
 import Layout from '../../ui/components/Layout';
@@ -9,7 +10,7 @@ import Text from '../../ui/components/Text';
 import theme from '../../ui/theme';
 import { StyledMenuButton, StyledMenuButtonContainer } from './styles';
 
-const Settings = () => {
+const Settings = ({ navigation }: HomeTabScreenProps<'Settings'>) => {
   const { t } = useTranslation('settings');
 
   return (
@@ -17,7 +18,7 @@ const Settings = () => {
       <Spacer size={30} />
 
       <StyledMenuButtonContainer>
-        <StyledMenuButton>
+        <StyledMenuButton disabled>
           <Flex
             align="center"
             direction="row"
@@ -40,7 +41,7 @@ const Settings = () => {
       </StyledMenuButtonContainer>
 
       <StyledMenuButtonContainer>
-        <StyledMenuButton>
+        <StyledMenuButton onPress={() => navigation.navigate('Language')}>
           <Flex
             align="center"
             direction="row"

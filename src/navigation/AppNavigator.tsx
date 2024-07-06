@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useAuth } from '../hooks/useAuth';
 import SignIn from '../screens/Auth/SignIn';
 import SignUp from '../screens/Auth/SignUp';
+import Language from '../screens/Language';
 import HomeTab from './HomeTab';
 import { RootStackParamList } from './types';
 
@@ -23,6 +24,11 @@ const AppNavigator = () => {
           <Stack.Screen
             component={HomeTab}
             name="HomeTab"
+          />
+
+          <Stack.Screen
+            component={Language}
+            name="Language"
           />
         </Stack.Group>
       ) : (

@@ -7,6 +7,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 
 export type RootStackParamList = {
   HomeTab: NavigatorScreenParams<HomeTabParamList>;
+  Language: undefined;
   SignIn: undefined;
   SignUp: undefined;
 };

@@ -5,6 +5,10 @@ import {
 } from './errors/authErrorTranslation';
 import { navigationEnUS, navigationPtBR } from './navigation';
 import {
+  languageTranslationEnUS,
+  languageTranslationPtBR,
+} from './screens/languageTranslation';
+import {
   settingsTranslationEnUS,
   settingsTranslationPtBR,
 } from './screens/settingsTranslation';
@@ -21,6 +25,7 @@ const resources = {
   'en-US': {
     authError: authErrorTranslationEnUS,
     common: commonEnUS,
+    language: languageTranslationEnUS,
     navigation: navigationEnUS,
     settings: settingsTranslationEnUS,
     signIn: signInTranslationEnUS,
@@ -29,6 +34,7 @@ const resources = {
   'pt-BR': {
     authError: authErrorTranslationPtBR,
     common: commonPtBR,
+    language: languageTranslationPtBR,
     navigation: navigationPtBR,
     settings: settingsTranslationPtBR,
     signIn: signInTranslationPtBR,
