@@ -19,7 +19,7 @@ export const iconButtonStyle = {
       border-width: 1px;
     `,
     primary: css`
-      background-color: ${theme.colors.text};
+      background-color: ${theme.colors.primary};
     `,
   },
 };

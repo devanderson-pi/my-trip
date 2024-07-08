@@ -6,7 +6,7 @@ import Home from '.';
 test('renders correctly', () => {
   customRender(<Home />);
 
-  const heading = screen.getByText('My trips');
-
-  expect(heading).toBeOnTheScreen();
+  expect(
+    screen.getByAccessibilityHint('Tap to add a new trip')
+  ).toBeOnTheScreen();
 });

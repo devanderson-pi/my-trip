@@ -16,7 +16,7 @@ describe('ui/components/IconButton', () => {
 
     expect(iconButton).toBeOnTheScreen();
     expect(iconButton).toHaveStyle({
-      backgroundColor: theme.colors.text,
+      backgroundColor: theme.colors.primary,
     });
   });
 
