@@ -5,3 +5,8 @@ export interface Trip {
   title: string;
   userId?: string;
 }
+
+export interface TripRegistration {
+  location: string;
+  title: string;
+}

@@ -41,7 +41,7 @@ const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
         return;
       }
 
-      ShowErrorSnackbar(t('authError:requestErrors.unexpectedError'));
+      ShowErrorSnackbar(t('common:errors.request.unexpectedError'));
     }
   };
 

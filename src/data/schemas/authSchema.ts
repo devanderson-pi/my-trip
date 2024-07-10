@@ -10,28 +10,20 @@ export const signInSchema: ZodSchema<UserCredential> = z
   })
   .required();
 
+const required_error = i18next.t('errors.formValidation.requiredField', {
+  ns: 'common',
+});
+
 export const signUpSchema: ZodSchema<UserRegistration> = z
   .object({
     name: z
-      .string({
-        required_error: i18next.t('formValidation.requiredField', {
-          ns: 'authError',
-        }),
-      })
+      .string({ required_error })
       .min(3, i18next.t('formValidation.nameTooShort', { ns: 'authError' })),
     email: z
-      .string({
-        required_error: i18next.t('formValidation.requiredField', {
-          ns: 'authError',
-        }),
-      })
+      .string({ required_error })
       .email(i18next.t('formValidation.invalidEmail', { ns: 'authError' })),
     password: z
-      .string({
-        required_error: i18next.t('formValidation.requiredField', {
-          ns: 'authError',
-        }),
-      })
+      .string({ required_error })
       .min(
         6,
         i18next.t('formValidation.passwordTooShort', { ns: 'authError' })

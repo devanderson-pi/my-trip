@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 
 import { useAuth } from '../../hooks/useAuth';
+import AddTrip from '../../screens/AddTrip';
 import SignIn from '../../screens/Auth/SignIn';
 import SignUp from '../../screens/Auth/SignUp';
 import Language from '../../screens/Language';
@@ -35,6 +36,15 @@ const AppNavigator = () => {
             options={{
               ...navigatorScreenOptions,
               headerTitle: t('language'),
+            }}
+          />
+
+          <Stack.Screen
+            component={AddTrip}
+            name="AddTrip"
+            options={{
+              ...navigatorScreenOptions,
+              headerTitle: t('addTrip'),
             }}
           />
         </Stack.Group>

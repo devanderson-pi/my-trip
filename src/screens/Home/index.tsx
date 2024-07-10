@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { FlatList, ListRenderItem } from 'react-native';
 
 import { Trip } from '../../data/@types/tripTypes';
+import { HomeTabScreenProps } from '../../navigation/types';
 import Card from '../../ui/components/Card';
 import Heading from '../../ui/components/Heading';
 import IconButton from '../../ui/components/IconButton';
@@ -15,7 +16,7 @@ import {
   StyledSeparator,
 } from './styles';
 
-const Home = () => {
+const Home = ({ navigation }: HomeTabScreenProps<'MyTrips'>) => {
   const { t } = useTranslation('home');
 
   const [trips] = useState<Trip[]>([]);
@@ -48,7 +49,7 @@ const Home = () => {
           accessibilityHint={t('accessibility.button.addTrip.hint')}
           accessibilityLabel={t('accessibility.button.addTrip.label')}
           iconName="plus"
-          onPress={() => null}
+          onPress={() => navigation.navigate('AddTrip')}
         />
       </StyledFloatingLabel>
     </Layout>
