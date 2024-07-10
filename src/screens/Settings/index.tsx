@@ -1,3 +1,4 @@
+import auth from '@react-native-firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -79,6 +80,9 @@ const Settings = ({ navigation }: HomeTabScreenProps<'Settings'>) => {
           accessibilityHint={t('accessibility.menu.signOut.hint')}
           accessibilityRole="menuitem"
           color={theme.colors.error}
+          onPress={() => {
+            auth().signOut();
+          }}
           variant="ghost"
         >
           {t('menu.signOut')}
