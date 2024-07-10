@@ -12,6 +12,7 @@ interface InputProps extends TextInputProps {
 const Input = ({
   accessibilityLabel,
   autoCapitalize = 'sentences',
+  onBlur,
   onChange,
   secureTextEntry = false,
   type = 'default',
@@ -22,6 +23,7 @@ const Input = ({
       accessibilityLabel={accessibilityLabel}
       autoCapitalize={autoCapitalize}
       keyboardType={type}
+      onBlur={onBlur}
       onChangeText={onChange}
       placeholderTextColor={theme.colors.text}
       secureTextEntry={secureTextEntry}

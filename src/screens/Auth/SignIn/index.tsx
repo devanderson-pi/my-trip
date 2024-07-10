@@ -37,11 +37,11 @@ const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
       const firebaseError = error as FirebaseSignInError;
 
       if (firebaseError.code !== 'auth/user-disabled') {
-        ShowErrorSnackbar(t('authError:invalidCredentials'));
+        ShowErrorSnackbar(t('authError:requestErrors.invalidCredentials'));
         return;
       }
 
-      ShowErrorSnackbar(t('authError:unexpectedError'));
+      ShowErrorSnackbar(t('authError:requestErrors.unexpectedError'));
     }
   };
 

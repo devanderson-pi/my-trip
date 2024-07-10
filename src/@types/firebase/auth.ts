@@ -10,3 +10,11 @@ export interface FirebaseSignInError extends FirebaseAuthError {
     | 'auth/user-not-found'
     | 'auth/wrong-password';
 }
+
+export interface FirebaseSignUpError extends FirebaseAuthError {
+  code:
+    | 'auth/email-already-in-use'
+    | 'auth/invalid-email'
+    | 'auth/operation-not-allowed'
+    | 'auth/weak-password';
+}
