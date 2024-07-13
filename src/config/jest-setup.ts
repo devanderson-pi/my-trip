@@ -5,6 +5,10 @@ jest.mock('@react-native-firebase/auth', () => ({
   auth: jest.fn(),
 }));
 
+jest.mock('@react-native-firebase/firestore', () => ({
+  firestore: jest.fn(),
+}));
+
 jest.mock('react-native-localization-settings');
 
 jest.mock('react-native-snackbar', () => ({

@@ -6,6 +6,12 @@ export const homeTranslationEnUS = {
         label: 'Add trip',
       },
     },
+    list: {
+      item: {
+        hint: 'Tap to open details of {{ title }}',
+        label: '',
+      },
+    },
   },
   listEmpty:
     "It looks like you haven't created any trips yet. How about starting now?",
@@ -17,6 +23,12 @@ export const homeTranslationPtBR = {
       addTrip: {
         hint: 'Toque para adicionar uma nova viagem',
         label: 'Criar viagem',
+      },
+    },
+    list: {
+      item: {
+        hint: 'Toque para abrir os detalhes de {{ title }}',
+        label: '',
       },
     },
   },
