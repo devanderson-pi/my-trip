@@ -5,12 +5,15 @@ import {
 } from '@react-navigation/native';
 import { StackScreenProps } from '@react-navigation/stack';
 
+import { Trip } from '../data/@types/tripTypes';
+
 export type RootStackParamList = {
   AddTrip: undefined;
   HomeTab: NavigatorScreenParams<HomeTabParamList>;
   Language: undefined;
   SignIn: undefined;
   SignUp: undefined;
+  TripDetails: Trip;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =

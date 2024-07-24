@@ -33,7 +33,7 @@ const Home = ({ navigation }: HomeTabScreenProps<'MyTrips'>) => {
             title: item.title,
           })}
           accessibilityRole="button"
-          onPress={() => null}
+          onPress={() => navigation.navigate('TripDetails', { ...item })}
         >
           <StyledCardBody>
             <Heading>{item.title}</Heading>
@@ -42,7 +42,7 @@ const Home = ({ navigation }: HomeTabScreenProps<'MyTrips'>) => {
         </Card>
       );
     },
-    [t]
+    [navigation, t]
   );
 
   useEffect(() => {

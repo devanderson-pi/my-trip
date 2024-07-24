@@ -6,6 +6,7 @@ import AddTrip from '../../screens/AddTrip';
 import SignIn from '../../screens/Auth/SignIn';
 import SignUp from '../../screens/Auth/SignUp';
 import Language from '../../screens/Language';
+import TripDetails from '../../screens/TripDetails';
 import HomeTab from '../HomeTab';
 import { RootStackParamList } from '../types';
 import navigatorScreenOptions from './navigatorScreenOptions';
@@ -45,6 +46,15 @@ const AppNavigator = () => {
             options={{
               ...navigatorScreenOptions,
               headerTitle: t('addTrip'),
+            }}
+          />
+
+          <Stack.Screen
+            component={TripDetails}
+            name="TripDetails"
+            options={{
+              ...navigatorScreenOptions,
+              headerTitle: t('tripDetails'),
             }}
           />
         </Stack.Group>

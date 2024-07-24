@@ -28,6 +28,10 @@ import {
   signUpTranslationEnUS,
   signUpTranslationPtBR,
 } from './screens/signUpTranslation';
+import {
+  tripDetailsTranslationEnUS,
+  tripDetailsTranslationPtBR,
+} from './screens/tripDetails';
 
 const resources = {
   'en-US': {
@@ -40,6 +44,7 @@ const resources = {
     settings: settingsTranslationEnUS,
     signIn: signInTranslationEnUS,
     signUp: signUpTranslationEnUS,
+    tripDetails: tripDetailsTranslationEnUS,
   },
   'pt-BR': {
     addTrip: addTripTranslationPtBR,
@@ -51,6 +56,7 @@ const resources = {
     settings: settingsTranslationPtBR,
     signIn: signInTranslationPtBR,
     signUp: signUpTranslationPtBR,
+    tripDetails: tripDetailsTranslationPtBR,
   },
 };
 

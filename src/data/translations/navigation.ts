@@ -11,6 +11,7 @@ export const navigationEnUS = {
   language: 'Language',
   myTrips: 'My Trips',
   settings: 'Settings',
+  tripDetails: 'Trip Details',
 };
 
 export const navigationPtBR = {
@@ -26,4 +27,5 @@ export const navigationPtBR = {
   language: 'Idioma',
   myTrips: 'Minhas Viagens',
   settings: 'Configurações',
+  tripDetails: 'Detalhes da Viagem',
 };
