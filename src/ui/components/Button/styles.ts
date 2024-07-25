@@ -2,16 +2,21 @@ import styled, { css } from '@emotion/native';
 
 import theme from '../../theme';
 
-interface LabelProps {
-  color?: string;
+interface ButtonProps {
+  isLoading?: boolean;
 }
 
-export const StyledButton = styled.TouchableOpacity`
+interface LabelProps {
+  color?: string;
+  isLoading?: boolean;
+}
+
+export const StyledButton = styled.TouchableOpacity<ButtonProps>`
   align-items: center;
   border-radius: 6px;
   flex-direction: row;
   justify-content: center;
-  opacity: ${({ disabled }) => disabled && '0.63'};
+  opacity: ${({ disabled, isLoading }) => disabled && !isLoading && '0.63'};
 `;
 
 export const StyledIconContainer = styled.View`
@@ -21,7 +26,7 @@ export const StyledIconContainer = styled.View`
 export const StyledLabel = styled.Text<LabelProps>`
   color: ${props => props.color || theme.colors.background};
   font-family: ${theme.fonts.medium};
-  opacity: ${({ disabled }) => disabled && '0.63'};
+  opacity: ${({ disabled, isLoading }) => disabled && !isLoading && '0.63'};
 `;
 
 export const buttonStyle = {

@@ -44,6 +44,7 @@ const Button = ({
       <StyledLabel
         color={item.color}
         disabled={disabled}
+        isLoading={isLoading}
         key={index}
         style={textStyle.size[size]}
       >
@@ -61,6 +62,7 @@ const Button = ({
       accessibilityLabel={accessibilityLabel}
       accessibilityRole={accessibilityRole}
       disabled={disabled}
+      isLoading={isLoading}
       onPress={onPress}
       style={[buttonStyle.size[size], buttonStyle.variant[variant]]}
       testID={testID}
@@ -71,6 +73,7 @@ const Button = ({
         <StyledLabel
           color={labelColor}
           disabled={disabled}
+          isLoading={isLoading}
           style={textStyle.size[size]}
         >
           {loadingText || children}
@@ -80,6 +83,7 @@ const Button = ({
           <StyledLabel
             color={labelColor}
             disabled={disabled}
+            isLoading={isLoading}
             style={textStyle.size[size]}
           >
             {children}

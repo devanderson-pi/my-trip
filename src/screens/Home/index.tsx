@@ -2,11 +2,13 @@ import firestore from '@react-native-firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, ListRenderItem } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 import { Trip } from '../../data/@types/tripTypes';
 import { useAuth } from '../../hooks/useAuth';
 import { HomeTabScreenProps } from '../../navigation/types';
 import Card from '../../ui/components/Card';
+import Flex from '../../ui/components/Flex';
 import Heading from '../../ui/components/Heading';
 import IconButton from '../../ui/components/IconButton';
 import Layout from '../../ui/components/Layout';
@@ -37,7 +39,19 @@ const Home = ({ navigation }: HomeTabScreenProps<'MyTrips'>) => {
         >
           <StyledCardBody>
             <Heading>{item.title}</Heading>
-            <Text>{item.location}</Text>
+
+            <Flex
+              align="center"
+              direction="row"
+              gap={8}
+            >
+              <Icon
+                name="map-pin"
+                size={16}
+              />
+
+              <Text>{item.location}</Text>
+            </Flex>
           </StyledCardBody>
         </Card>
       );

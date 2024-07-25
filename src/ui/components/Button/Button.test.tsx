@@ -197,4 +197,29 @@ describe('ui/components/Button', () => {
       });
     });
   });
+
+  test('verify that the button maintains a visually active appearance while disabled during the loading state', () => {
+    render(
+      <Button
+        disabled
+        isLoading
+        testID="button"
+      >
+        Test
+      </Button>
+    );
+
+    const button = screen.getByTestId('button');
+    const label = screen.getByText('Loading');
+
+    expect(button).toBeOnTheScreen();
+    expect(label).toBeOnTheScreen();
+
+    expect(button).not.toHaveStyle({
+      opacity: 0.63,
+    });
+    expect(label).not.toHaveStyle({
+      opacity: 0.63,
+    });
+  });
 });

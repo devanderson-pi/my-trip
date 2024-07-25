@@ -20,7 +20,7 @@ import theme from '../../../ui/theme';
 const SignUp = ({ navigation }: RootStackScreenProps<'SignUp'>) => {
   const {
     control,
-    formState: { isValid },
+    formState: { isSubmitting, isValid },
     handleSubmit,
   } = useForm<UserRegistration>({
     mode: 'onBlur',
@@ -170,7 +170,8 @@ const SignUp = ({ navigation }: RootStackScreenProps<'SignUp'>) => {
       <Spacer size={32} />
 
       <Button
-        disabled={!isValid}
+        disabled={isSubmitting || !isValid}
+        isLoading={isSubmitting}
         onPress={handleSubmit(onSubmit)}
       >
         {t('button.signUp')}

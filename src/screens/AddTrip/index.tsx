@@ -20,7 +20,7 @@ const AddTrip = ({ navigation }: RootStackScreenProps<'AddTrip'>) => {
   const { user } = useAuth();
   const {
     control,
-    formState: { isLoading, isValid },
+    formState: { isSubmitting, isValid },
     handleSubmit,
   } = useForm<TripRegistration>({
     mode: 'onBlur',
@@ -109,7 +109,8 @@ const AddTrip = ({ navigation }: RootStackScreenProps<'AddTrip'>) => {
       <Spacer size={48} />
 
       <Button
-        disabled={isLoading || !isValid}
+        disabled={isSubmitting || !isValid}
+        isLoading={isSubmitting}
         onPress={handleSubmit(onSubmit)}
       >
         {t('button.addTrip')}

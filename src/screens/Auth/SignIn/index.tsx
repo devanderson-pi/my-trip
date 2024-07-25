@@ -20,7 +20,7 @@ import theme from '../../../ui/theme';
 const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
   const {
     control,
-    formState: { isValid },
+    formState: { isSubmitting, isValid },
     handleSubmit,
   } = useForm<UserCredential>({
     resolver: zodResolver(signInSchema),
@@ -117,7 +117,8 @@ const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
       <Spacer size={32} />
 
       <Button
-        disabled={!isValid}
+        disabled={isSubmitting || !isValid}
+        isLoading={isSubmitting}
         onPress={handleSubmit(onSubmit)}
       >
         {t('button.signIn')}
