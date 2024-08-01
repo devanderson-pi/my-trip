@@ -7,6 +7,7 @@ import SignIn from '../../screens/Auth/SignIn';
 import SignUp from '../../screens/Auth/SignUp';
 import Language from '../../screens/Language';
 import TripDetails from '../../screens/TripDetails';
+import TripDetailsHeaderRight from '../../screens/TripDetails/components/HeaderRight';
 import HomeTab from '../HomeTab';
 import { RootStackParamList } from '../types';
 import navigatorScreenOptions from './navigatorScreenOptions';
@@ -52,10 +53,14 @@ const AppNavigator = () => {
           <Stack.Screen
             component={TripDetails}
             name="TripDetails"
-            options={{
+            options={({ route }) => ({
               ...navigatorScreenOptions,
+              // eslint-disable-next-line react/no-unstable-nested-components
+              headerRight: () => {
+                return <TripDetailsHeaderRight tripId={route.params.id} />;
+              },
               headerTitle: t('tripDetails'),
-            }}
+            })}
           />
         </Stack.Group>
       ) : (
