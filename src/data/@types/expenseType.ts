@@ -1,8 +1,9 @@
 export interface Expense {
-  amount: number;
+  amount: number | string;
   category: string;
   createdAt: Date;
   id: string;
   title: string;
-  tripId?: string;
 }
+
+export type ExpenseRegistration = Omit<Expense, 'createdAt' | 'id'>;

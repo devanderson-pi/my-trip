@@ -60,31 +60,33 @@ const Home = ({ navigation }: HomeTabScreenProps<'MyTrips'>) => {
   );
 
   useEffect(() => {
-    if (user) {
-      const subscriber = firestore()
-        .collection('trips')
-        .orderBy('createdAt', 'desc')
-        .where('userId', '==', user.uid)
-        .onSnapshot(
-          querySnapshot => {
-            const tripsData: Trip[] = [];
-
-            querySnapshot.forEach(documentSnapshot => {
-              tripsData.push({
-                ...documentSnapshot.data(),
-                id: documentSnapshot.id,
-              } as Trip);
-            });
-
-            setTrips(tripsData);
-          },
-          () => {
-            ShowErrorSnackbar(t('common:errors.request.unexpectedError'));
-          }
-        );
-
-      return () => subscriber();
+    if (!user) {
+      return;
     }
+
+    const subscriber = firestore()
+      .collection('trips')
+      .orderBy('createdAt', 'desc')
+      .where('userId', '==', user.uid)
+      .onSnapshot(
+        querySnapshot => {
+          const tripsData: Trip[] = [];
+
+          querySnapshot.forEach(documentSnapshot => {
+            tripsData.push({
+              ...documentSnapshot.data(),
+              id: documentSnapshot.id,
+            } as Trip);
+          });
+
+          setTrips(tripsData);
+        },
+        () => {
+          ShowErrorSnackbar(t('common:errors.request.unexpectedError'));
+        }
+      );
+
+    return () => subscriber();
   }, [t, user]);
 
   return (

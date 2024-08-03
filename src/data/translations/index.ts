@@ -5,6 +5,10 @@ import {
 } from './errors/authErrorTranslation';
 import { navigationEnUS, navigationPtBR } from './navigation';
 import {
+  addExpenseTranslationEnUS,
+  addExpenseTranslationPtBR,
+} from './screens/addExpenseTranslation';
+import {
   addTripTranslationEnUS,
   addTripTranslationPtBR,
 } from './screens/addTripTranslation';
@@ -35,6 +39,7 @@ import {
 
 const resources = {
   'en-US': {
+    addExpense: addExpenseTranslationEnUS,
     addTrip: addTripTranslationEnUS,
     authError: authErrorTranslationEnUS,
     common: commonEnUS,
@@ -47,6 +52,7 @@ const resources = {
     tripDetails: tripDetailsTranslationEnUS,
   },
   'pt-BR': {
+    addExpense: addExpenseTranslationPtBR,
     addTrip: addTripTranslationPtBR,
     authError: authErrorTranslationPtBR,
     common: commonPtBR,

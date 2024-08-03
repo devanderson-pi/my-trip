@@ -1,5 +1,6 @@
+import firestore from '@react-native-firebase/firestore';
 import i18next from 'i18next';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, ListRenderItem, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -10,22 +11,23 @@ import Card from '../../ui/components/Card';
 import Flex from '../../ui/components/Flex';
 import Heading from '../../ui/components/Heading';
 import Layout from '../../ui/components/Layout';
+import ShowErrorSnackbar from '../../ui/components/ShowErrorSnackbar';
 import Spacer from '../../ui/components/Spacer';
 import Text from '../../ui/components/Text';
 import theme from '../../ui/theme';
 import formatCurrency from '../../ui/utils/formatCurrency';
-import { StyledSeparator } from './styles';
+import { cardStyle, StyledSeparator } from './styles';
 
 const TripDetails = ({ route }: RootStackScreenProps<'TripDetails'>) => {
-  const { location, title } = route.params;
+  const { id, location, title } = route.params;
 
-  const { t } = useTranslation('tripDetails');
+  const { t } = useTranslation(['tripDetails', 'common']);
 
-  const [expenses] = useState<Expense[]>([]);
+  const [expenses, setExpenses] = useState<Expense[]>([]);
 
   const renderItem: ListRenderItem<Expense> = useCallback(({ item }) => {
     return (
-      <Card>
+      <Card style={cardStyle}>
         <View>
           <Heading>{item.title}</Heading>
           <Text>{item.category}</Text>
@@ -35,11 +37,42 @@ const TripDetails = ({ route }: RootStackScreenProps<'TripDetails'>) => {
           color={theme.colors.error}
           weight="medium"
         >
-          &minus;{formatCurrency(item.amount, i18next.language)}
+          &minus;{formatCurrency(Number(item.amount), i18next.language)}
         </Text>
       </Card>
     );
   }, []);
+
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+
+    const subscriber = firestore()
+      .collection('trips')
+      .doc(id)
+      .collection('expenses')
+      .orderBy('createdAt', 'desc')
+      .onSnapshot(
+        querySnapshot => {
+          const expensesData: Expense[] = [];
+
+          querySnapshot.forEach(documentSnapshot => {
+            expensesData.push({
+              ...documentSnapshot.data(),
+              id: documentSnapshot.id,
+            } as Expense);
+
+            setExpenses(expensesData);
+          });
+        },
+        () => {
+          ShowErrorSnackbar(t('common:errors.request.unexpectedError'));
+        }
+      );
+
+    return () => subscriber();
+  }, [id, t]);
 
   return (
     <Layout>

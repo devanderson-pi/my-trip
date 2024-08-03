@@ -1,6 +1,8 @@
 export const commonEnUS = {
   errors: {
     formValidation: {
+      invalidNumber: 'The value must be a number.',
+      positiveNumber: 'The value must be a positive number.',
       requiredField: 'This field is required.',
     },
     request: {
@@ -18,6 +20,8 @@ export const commonEnUS = {
 export const commonPtBR = {
   errors: {
     formValidation: {
+      invalidNumber: 'O valor deve ser um número.',
+      positiveNumber: 'O valor deve ser um número positivo.',
       requiredField: 'Este campo é obrigatório.',
     },
     request: {

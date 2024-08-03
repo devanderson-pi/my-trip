@@ -15,7 +15,7 @@ interface TripDetailsHeaderRightProps {
 }
 
 const TripDetailsHeaderRight = ({ tripId }: TripDetailsHeaderRightProps) => {
-  const { goBack } =
+  const { goBack, navigate } =
     useNavigation<RootStackScreenProps<'TripDetails'>['navigation']>();
   const { t } = useTranslation(['tripDetails', 'common']);
 
@@ -48,7 +48,7 @@ const TripDetailsHeaderRight = ({ tripId }: TripDetailsHeaderRightProps) => {
         onClose={() => setIsOpen(false)}
         options={[
           {
-            action: () => {},
+            action: () => navigate('AddExpense', { tripId }),
             icon: 'plus',
             text: t('menu.addExpense'),
           },

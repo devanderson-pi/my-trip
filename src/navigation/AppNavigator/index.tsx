@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 
 import { useAuth } from '../../hooks/useAuth';
+import AddExpense from '../../screens/AddExpense';
 import AddTrip from '../../screens/AddTrip';
 import SignIn from '../../screens/Auth/SignIn';
 import SignUp from '../../screens/Auth/SignUp';
@@ -61,6 +62,15 @@ const AppNavigator = () => {
               },
               headerTitle: t('tripDetails'),
             })}
+          />
+
+          <Stack.Screen
+            component={AddExpense}
+            name="AddExpense"
+            options={{
+              ...navigatorScreenOptions,
+              headerTitle: t('addExpense'),
+            }}
           />
         </Stack.Group>
       ) : (

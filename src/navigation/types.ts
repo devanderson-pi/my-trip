@@ -8,6 +8,9 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { Trip } from '../data/@types/tripTypes';
 
 export type RootStackParamList = {
+  AddExpense: {
+    tripId: string;
+  };
   AddTrip: undefined;
   HomeTab: NavigatorScreenParams<HomeTabParamList>;
   Language: undefined;
