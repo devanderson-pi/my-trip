@@ -1,11 +1,14 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { render, screen, userEvent } from '@testing-library/react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import theme from '../../theme';
 import Button from '.';
 
+jest.useFakeTimers();
+
 describe('ui/components/Button', () => {
-  test('renders default Button correctly', () => {
+  test('renders default Button correctly', async () => {
+    const user = userEvent.setup();
     const onPressMock = jest.fn();
 
     render(
@@ -34,7 +37,7 @@ describe('ui/components/Button', () => {
       lineHeight: 28,
     });
 
-    fireEvent.press(button);
+    await user.press(button);
     expect(onPressMock).toHaveBeenCalledTimes(1);
   });
 
