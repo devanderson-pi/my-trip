@@ -15,6 +15,7 @@ export const settingsTranslationEnUS = {
       },
     },
   },
+  loading: 'Signing out...',
   menu: {
     account: 'Account',
     language: 'Language',
@@ -39,6 +40,7 @@ export const settingsTranslationPtBR = {
       },
     },
   },
+  loading: 'Saindo...',
   menu: {
     account: 'Conta',
     language: 'Idioma',

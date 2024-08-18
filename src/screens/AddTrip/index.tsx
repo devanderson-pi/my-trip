@@ -111,6 +111,7 @@ const AddTrip = ({ navigation }: RootStackScreenProps<'AddTrip'>) => {
       <Button
         disabled={isSubmitting || !isValid}
         isLoading={isSubmitting}
+        loadingText={t('addTrip:button.loading')}
         onPress={handleSubmit(onSubmit)}
       >
         {t('button.addTrip')}

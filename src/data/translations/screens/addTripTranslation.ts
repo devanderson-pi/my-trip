@@ -1,6 +1,7 @@
 export const addTripTranslationEnUS = {
   button: {
     addTrip: 'Add trip',
+    loading: 'Saving trip...',
   },
   label: {
     location: 'Location',
@@ -11,6 +12,7 @@ export const addTripTranslationEnUS = {
 export const addTripTranslationPtBR = {
   button: {
     addTrip: 'Criar viagem',
+    loading: 'Salvando viagem...',
   },
   label: {
     location: 'Lugar',

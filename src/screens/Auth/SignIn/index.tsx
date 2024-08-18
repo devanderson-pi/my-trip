@@ -119,6 +119,7 @@ const SignIn = ({ navigation }: RootStackScreenProps<'SignIn'>) => {
       <Button
         disabled={isSubmitting || !isValid}
         isLoading={isSubmitting}
+        loadingText={t('button.loading')}
         onPress={handleSubmit(onSubmit)}
       >
         {t('button.signIn')}

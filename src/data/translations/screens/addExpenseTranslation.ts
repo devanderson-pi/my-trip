@@ -1,6 +1,7 @@
 export const addExpenseTranslationEnUS = {
   button: {
     addExpense: 'Add expense',
+    loading: 'Saving expense...',
   },
   label: {
     amount: 'Amount',
@@ -12,6 +13,7 @@ export const addExpenseTranslationEnUS = {
 export const addExpenseTranslationPtBR = {
   button: {
     addExpense: 'Criar despesa',
+    loading: 'Salvando despesa...',
   },
   label: {
     amount: 'Valor',

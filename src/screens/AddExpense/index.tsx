@@ -149,6 +149,8 @@ const AddExpense = ({
 
       <Button
         disabled={isSubmitting || !isValid}
+        isLoading={isSubmitting}
+        loadingText={t('addExpense:button.loading')}
         onPress={handleSubmit(onSubmit)}
       >
         {t('button.addExpense')}
