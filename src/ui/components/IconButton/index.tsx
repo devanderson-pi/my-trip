@@ -12,6 +12,7 @@ interface IconButtonProps extends TouchableOpacityProps {
 const IconButton = ({
   accessibilityHint,
   accessibilityLabel,
+  disabled,
   iconName,
   onPress,
   testID,
@@ -22,6 +23,7 @@ const IconButton = ({
       accessibilityHint={accessibilityHint}
       accessibilityLabel={accessibilityLabel}
       accessibilityRole="button"
+      disabled={disabled}
       onPress={onPress}
       style={iconButtonStyle.variant[variant]}
       testID={testID}

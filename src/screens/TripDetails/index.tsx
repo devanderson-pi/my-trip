@@ -1,6 +1,7 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import firestore from '@react-native-firebase/firestore';
 import i18next from 'i18next';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, ListRenderItem, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
@@ -16,32 +17,56 @@ import Spacer from '../../ui/components/Spacer';
 import Text from '../../ui/components/Text';
 import theme from '../../ui/theme';
 import formatCurrency from '../../ui/utils/formatCurrency';
+import ExpenseBottomSheet from './components/ExpenseBottomSheet';
 import { cardStyle, StyledSeparator } from './styles';
+
+type SelectedExpense = Expense & { tripId: string };
 
 const TripDetails = ({ route }: RootStackScreenProps<'TripDetails'>) => {
   const { id, location, title } = route.params;
 
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const { t } = useTranslation(['tripDetails', 'common']);
 
+  const [selectedExpense, setSelectedExpense] = useState<SelectedExpense>(
+    {} as SelectedExpense
+  );
   const [expenses, setExpenses] = useState<Expense[]>([]);
 
-  const renderItem: ListRenderItem<Expense> = useCallback(({ item }) => {
-    return (
-      <Card style={cardStyle}>
-        <View>
-          <Heading>{item.title}</Heading>
-          <Text>{item.category}</Text>
-        </View>
-
-        <Text
-          color={theme.colors.error}
-          weight="medium"
-        >
-          &minus;{formatCurrency(Number(item.amount), i18next.language)}
-        </Text>
-      </Card>
-    );
+  const handleDismissPress = useCallback(() => {
+    bottomSheetModalRef.current?.dismiss();
   }, []);
+
+  const handlePresentPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+
+  const renderItem: ListRenderItem<Expense> = useCallback(
+    ({ item }) => {
+      return (
+        <Card
+          onPress={() => {
+            setSelectedExpense({ ...item, tripId: id });
+            handlePresentPress();
+          }}
+          style={cardStyle}
+        >
+          <View>
+            <Heading>{item.title}</Heading>
+            <Text>{item.category}</Text>
+          </View>
+
+          <Text
+            color={theme.colors.error}
+            weight="medium"
+          >
+            &minus;{formatCurrency(Number(item.amount), i18next.language)}
+          </Text>
+        </Card>
+      );
+    },
+    [handlePresentPress, id]
+  );
 
   useEffect(() => {
     if (!id) {
@@ -109,6 +134,12 @@ const TripDetails = ({ route }: RootStackScreenProps<'TripDetails'>) => {
           </>
         }
         showsVerticalScrollIndicator={false}
+      />
+
+      <ExpenseBottomSheet
+        dismiss={handleDismissPress}
+        expense={selectedExpense}
+        ref={bottomSheetModalRef}
       />
     </Layout>
   );
