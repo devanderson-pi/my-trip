@@ -1,6 +1,6 @@
-import i18next from 'i18next';
-import { z, ZodSchema } from 'zod';
+import { ZodSchema } from 'zod';
 
+import { z } from '../../config/i18next';
 import { UserCredential, UserRegistration } from '../@types/authType';
 
 export const signInSchema: ZodSchema<UserCredential> = z
@@ -10,23 +10,16 @@ export const signInSchema: ZodSchema<UserCredential> = z
   })
   .required();
 
-const required_error = i18next.t('errors.formValidation.requiredField', {
-  ns: 'common',
-});
-
 export const signUpSchema: ZodSchema<UserRegistration> = z
   .object({
-    name: z
-      .string({ required_error })
-      .min(3, i18next.t('formValidation.nameTooShort', { ns: 'authError' })),
-    email: z
-      .string({ required_error })
-      .email(i18next.t('formValidation.invalidEmail', { ns: 'authError' })),
-    password: z
-      .string({ required_error })
-      .min(
-        6,
-        i18next.t('formValidation.passwordTooShort', { ns: 'authError' })
-      ),
+    name: z.string().refine(val => !(val.length < 3), {
+      params: { i18n: 'formValidation.nameTooShort' },
+    }),
+    email: z.string().email(),
+    password: z.string().refine(val => !(val.length < 6), {
+      params: { i18n: 'formValidation.passwordTooShort' },
+    }),
   })
   .required();
+
+signUpSchema.safeParse('');

@@ -1,6 +1,5 @@
 export const authErrorTranslationEnUS = {
   formValidation: {
-    invalidEmail: 'Please enter a valid email address.',
     nameTooShort: 'Please enter a name with at least 3 characters.',
     passwordTooShort: 'Password must be at least 6 characters long.',
   },
@@ -13,7 +12,6 @@ export const authErrorTranslationEnUS = {
 
 export const authErrorTranslationPtBR = {
   formValidation: {
-    invalidEmail: 'Por favor, insira um endereço de email válido.',
     nameTooShort: 'Por favor, insira um nome com pelo menos 3 caracteres.',
     passwordTooShort: 'A senha deve ter pelo menos 6 caracteres.',
   },

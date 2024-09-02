@@ -1,3 +1,6 @@
+import zodTranslationEn from 'zod-i18n-map/locales/en/zod.json';
+import zodTranslationPt from 'zod-i18n-map/locales/pt/zod.json';
+
 import { commonEnUS, commonPtBR } from './common';
 import {
   authErrorTranslationEnUS,
@@ -50,6 +53,7 @@ const resources = {
     signIn: signInTranslationEnUS,
     signUp: signUpTranslationEnUS,
     tripDetails: tripDetailsTranslationEnUS,
+    zod: zodTranslationEn,
   },
   'pt-BR': {
     addExpense: addExpenseTranslationPtBR,
@@ -63,6 +67,7 @@ const resources = {
     signIn: signInTranslationPtBR,
     signUp: signUpTranslationPtBR,
     tripDetails: tripDetailsTranslationPtBR,
+    zod: zodTranslationPt,
   },
 };
 

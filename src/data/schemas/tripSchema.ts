@@ -1,13 +1,15 @@
-import i18next from 'i18next';
-import { z, ZodSchema } from 'zod';
+import { ZodSchema } from 'zod';
 
+import { z } from '../../config/i18next';
 import { TripRegistration } from '../@types/tripTypes';
 
-const message = i18next.t('errors.formValidation.requiredField', {
-  ns: 'common',
+export const tripSchema: ZodSchema<TripRegistration> = z.object({
+  location: z.string().refine(val => !(val.length === 0), {
+    params: { i18n: 'errors.invalid_type_received_undefined' },
+  }),
+  title: z.string().refine(val => !(val.length === 0), {
+    params: { i18n: 'errors.invalid_type_received_undefined' },
+  }),
 });
 
-export const tripSchema: ZodSchema<TripRegistration> = z.object({
-  location: z.string({ required_error: message }).min(1, message),
-  title: z.string({ required_error: message }).min(1, message),
-});
+tripSchema.safeParse('');

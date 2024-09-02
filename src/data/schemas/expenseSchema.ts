@@ -1,15 +1,7 @@
-import i18next, { Namespace } from 'i18next';
-import { z, ZodSchema } from 'zod';
+import { ZodSchema } from 'zod';
 
+import { z } from '../../config/i18next';
 import { ExpenseRegistration } from '../@types/expenseType';
-
-const ns: Namespace = 'common';
-
-const message = {
-  invalidNumber: i18next.t('errors.formValidation.invalidNumber', { ns }),
-  positiveNumber: i18next.t('errors.formValidation.positiveNumber', { ns }),
-  requiredField: i18next.t('errors.formValidation.requiredField', { ns }),
-};
 
 function convertCommaToDot(value: string): number {
   return parseFloat(value.replaceAll(',', '.'));
@@ -20,17 +12,17 @@ export const expenseSchema: ZodSchema<ExpenseRegistration> = z.object({
     z
       .string()
       .transform(value => convertCommaToDot(value))
-      .pipe(
-        z.coerce
-          .number({ message: message.invalidNumber })
-          .positive({ message: message.positiveNumber })
-      ),
-    z.literal('').refine(() => false, { message: message.requiredField }),
+      .pipe(z.coerce.number().positive()),
+    z.literal('').refine(() => false, {
+      params: { i18n: 'errors.invalid_type_received_undefined' },
+    }),
   ]),
-  category: z
-    .string({ required_error: message.requiredField })
-    .min(1, message.requiredField),
-  title: z
-    .string({ required_error: message.requiredField })
-    .min(1, message.requiredField),
+  category: z.string().refine(val => !(val.length === 0), {
+    params: { i18n: 'errors.invalid_type_received_undefined' },
+  }),
+  title: z.string().refine(val => !(val.length === 0), {
+    params: { i18n: 'errors.invalid_type_received_undefined' },
+  }),
 });
+
+expenseSchema.safeParse('');

@@ -1,6 +1,8 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { ReactNativeLanguageDetector } from 'react-native-localization-settings';
+import { z } from 'zod';
+import { makeZodI18nMap } from 'zod-i18n-map';
 
 import resources from '../data/translations';
 
@@ -16,3 +18,7 @@ i18next
     resources,
     supportedLngs: ['en-US', 'pt-BR'],
   });
+
+z.setErrorMap(makeZodI18nMap({ ns: ['zod', 'authError'] }));
+
+export { z };
